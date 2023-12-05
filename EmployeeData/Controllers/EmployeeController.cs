@@ -26,6 +26,7 @@ namespace EmployeeData.Controllers
                         Id = employee.Id,
                         FirstName = employee.FirstName,
                         LastName = employee.LastName,
+                        DateOfBirth = employee.DateOfBirth,
                         Email = employee.Email,
                         Salary = employee.Salary
                     };
@@ -35,5 +36,11 @@ namespace EmployeeData.Controllers
             }
             return View(employeeList);
         }
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
     }
 }
