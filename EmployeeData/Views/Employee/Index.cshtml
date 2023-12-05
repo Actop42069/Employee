@@ -1,4 +1,4 @@
-﻿@model List<EmployeeData.Models.EmployeeViewModel>
+﻿@model List<EmployeeData.Models.EmployeeViewModelcs>
 
 @{
 	ViewData["Title"] = "Employee Details";
@@ -6,8 +6,8 @@
 <h3>@ViewData["Title"]</h3>
 <hr/>
 <form>
-	<button asp-action="Create" asp-controller="Employee" class="btn btn-primary">Create Employee</button>
-	<table class="table table-responsive table-hover">
+	<button asp-action="Create" asp-controller="Employee" class="btn btn-primary mb-3">Create Employee</button>
+	<table class="table table-responsive table-hover table-bordered">
 		<thead>
 			<tr class="table-active">
 				<th>Id</th>
@@ -17,7 +17,7 @@
 				<th>Salary</th>
 				<th>Action</th>
 
-			</trv>
+			</tr>
 		</thead>
 		<tbody>
 			@if (Model != null && Model.Any())
@@ -38,16 +38,16 @@
 						</td>
 					</tr>
 				}
+			}
 			else
-				{
-					<tr>
-						<td colspan="6">
-							<div>
-								The list seems to be empty. Wanna add something to the table dude?
-							</div>
-						</td>
-					</tr>
-				}
+			{
+				<tr>
+					<td colspan="6">
+						<div>
+							The list seems to be empty. Wanna add something to the table dude?
+						</div>
+					</td>
+				</tr>
 			}
 		</tbody>
 
