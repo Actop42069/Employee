@@ -74,6 +74,28 @@ namespace EmployeeData.Controllers
                 return View();
             }
         }
-
+        [HttpGet]
+        public IActionResult Edit(int Id)
+        {
+            var employee = _context.Employees.SingleOrDefault(x => x.Id == Id);
+            if(employee != null)
+            {
+                var employeeView = new EmployeeViewModelcs()
+                {
+                    Id = employee.Id,
+                    FirstName = employee.FirstName,
+                    LastName = employee.LastName,
+                    DateOfBirth = employee.DateOfBirth,
+                    Email = employee.Email,
+                    Salary = employee.Salary
+                };
+				return View(employeeView);
+			}
+            else
+            {
+                TempData["errorMessage"] = $"Employee detail not available with the Id: {Id}";
+            }
+            
+        }
     }
 }
