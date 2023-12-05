@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "moQkKt4p9vMhEo9vDt1I7JAGyXwyfqTS58RWnYFcdaA=",
+  "Hash": "GkLnyS9TrvSqTphtvknDn6XEzQLNkyJnxHcXFXwhIEM=",
   "Source": "EmployeeData",
   "BasePath": "_content/EmployeeData",
   "Mode": "Default",
@@ -927,6 +927,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "D:\\ASP.NET\\Demo\\EmployeeData\\wwwroot\\js\\CustomJS.js",
+      "SourceId": "EmployeeData",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\ASP.NET\\Demo\\EmployeeData\\wwwroot\\",
+      "BasePath": "_content/EmployeeData",
+      "RelativePath": "js/CustomJS.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\CustomJS.js"
     },
     {
       "Identity": "D:\\ASP.NET\\Demo\\EmployeeData\\wwwroot\\js\\site.js",

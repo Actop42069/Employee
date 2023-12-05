@@ -69,7 +69,7 @@ namespace EmployeeData.Controllers
                 }
             }
             catch (Exception ex)
-            {
+            { 
                 TempData["errorMessage"] = ex.Message;
                 return View();
             }
