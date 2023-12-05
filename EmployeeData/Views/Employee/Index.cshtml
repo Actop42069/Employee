@@ -28,12 +28,12 @@ else if(!string.IsNullOrWhiteSpace(errorMessage))
 	<table class="table table-responsive table-hover table-bordered">
 		<thead>
 			<tr class="table-active">
-				<th>Id</th>
-				<th>Name</th>
-				<th>Date Of Birth</th>
-				<th>E-mail</th>
-				<th>Salary</th>
-				<th>Action</th>
+				<th class="text-center">Id</th>
+				<th class="text-center">Name</th>
+				<th class="text-center">Date Of Birth</th>
+				<th class="text-center">E-mail</th>
+				<th class="text-center">Salary</th>
+				<th class="text-center">Action</th>
 
 			</tr>
 		</thead>
@@ -43,12 +43,12 @@ else if(!string.IsNullOrWhiteSpace(errorMessage))
 				@foreach (var employee in Model)
 				{
 					<tr>
-						<td>@employee.Id</td>
-						<td>@employee.FullName</td>
-						<td>@employee.DateOfBirth.ToString("MM/dd/yyyy")</td>
+						<td class="text-center fw-bold">@employee.Id</td>
+						<td class="text-center">@employee.FullName</td>
+						<td class="text-center">@employee.DateOfBirth.ToString("MM/dd/yyyy")</td>
 						<td>@employee.Email</td>
-						<td>@employee.Salary</td>
-						<td>
+						<td class="text-end">@employee.Salary</td>
+						<td class="text-center">
 							<div class="btn-group btn-group-sm">
 								<a asp-controller="Employee" asp-action="Edit" asp-route-id="@employee.Id" class="btn btn-primary">Edit</a>
 								<a asp-controller="Employee" asp-action="Delete" asp-route-id="@employee.Id" class="btn btn-danger">Delete</a>
