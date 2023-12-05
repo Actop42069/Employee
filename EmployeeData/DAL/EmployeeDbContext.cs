@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using EmployeeData.Models.DBEntites;
+using Microsoft.EntityFrameworkCore;
 
 namespace EmployeeData.DAL
 {
