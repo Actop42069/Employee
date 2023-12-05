@@ -1,5 +1,6 @@
 ﻿using EmployeeData.DAL;
 using EmployeeData.Models;
+using EmployeeData.Models.DBEntites;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EmployeeData.Controllers
@@ -40,6 +41,38 @@ namespace EmployeeData.Controllers
         public IActionResult Create()
         {
             return View();
+        }
+        [HttpPost]
+        public IActionResult Create(EmployeeViewModelcs employeeData)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var employee = new Employee()
+                    {
+                        FirstName = employeeData.FirstName,
+                        LastName = employeeData.LastName,
+                        DateOfBirth = employeeData.DateOfBirth,
+                        Email = employeeData.Email,
+                        Salary = employeeData.Salary
+                    };
+                    _context.Employees.Add(employee);
+                    _context.SaveChanges();
+                    TempData["successMessage"] = "Thanks for entering your crucial information.";
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    TempData["errorMessage"] = "Milena bhai milena";
+                    return View();
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                return View();
+            }
         }
 
     }

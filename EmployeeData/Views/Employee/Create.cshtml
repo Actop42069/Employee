@@ -2,10 +2,19 @@
 
 @{
 	ViewData["Title"] = "Create Employee";
+	var errorMessage = TempData["errorMessage"]?.ToString();
 }
 
 <h3>@ViewData["Title"]</h3>
 <hr />
+ @if(!string.IsNullOrWhiteSpace(errorMessage))
+{
+<div class="alert alert-danger">
+	<strong>Sadness ;_; </strong>@errorMessage
+	<button type="button" class="btn-close float-end" data-bs-dismiss="alert"></button>
+</div>
+
+}
 
 <form action="Create" method="post">
 	<div class="mb-3">
@@ -16,12 +25,12 @@
 	<div class="mb-3">
 		<label class="form-label">Last Name</label>
 		<input type="text" class="form-control" asp-for="LastName" />
-		<span asp-validation-for="LastName" class="text-success"></span>
+		<span asp-validation-for="LastName" class="text-danger"></span>
 	</div>
 	<div class="mb-3">
 		<label class="form-label">Date Of Birth</label>
 		<input type="date" class="form-control" asp-for="DateOfBirth" />
-		<span asp-validation-for="DateOfBirth" class="text-info"></span>
+		<span asp-validation-for="DateOfBirth" class="text-danger"></span>
 	</div>
 	<div class="mb-3">
 		<label class="form-label">Email</label>
@@ -29,7 +38,7 @@
 		<span asp-validation-for="Email" class="text-danger"></span>
 	</div>
 	<div class="mb-3">
-		<label class="form-control">Salary</label>
+		<label class="form-label">Salary</label>
 		<div class="input-group">
 			<span class="input-group-text">Rs.</span>
 			<input type="text" class="form-control" asp-for="Salary" />
