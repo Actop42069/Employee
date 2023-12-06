@@ -103,8 +103,40 @@ namespace EmployeeData.Controllers
             {
                 TempData["errorMessage"] = ex.Message;
                 return RedirectToAction("Index");
+            }           
+        }
+        [HttpPost]
+        public IActionResult Edit(EmployeeViewModelcs model)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var employee = new Employee()
+                    {
+                        Id = model.Id,
+                        FirstName = model.FirstName,
+                        LastName = model.LastName,
+                        DateOfBirth = model.DateOfBirth,
+                        Email = model.Email,
+                        Salary = model.Salary
+                    };
+                    _context.Employees.Update(employee);
+                    _context.SaveChanges();
+                    TempData["successMessage"] = "Employees details haru dami para ley update vayo";
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    TempData["errorMessage"] = "Model Data is invalid, milena bhai milena";
+                    return View();
+                }
             }
-            
+            catch (Exception ex)
+            {
+                TempData["errorMessage"] = ex.Message;
+                return View();
+            }
         }
     }
 }
