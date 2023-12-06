@@ -138,5 +138,64 @@ namespace EmployeeData.Controllers
                 return View();
             }
         }
-    }
+
+		[HttpGet]
+		public IActionResult Delete(int Id)
+		{
+			try
+			{
+				var employee = _context.Employees.SingleOrDefault(x => x.Id == Id);
+				if (employee != null)
+				{
+					var employeeView = new EmployeeViewModelcs()
+					{
+						Id = employee.Id,
+						FirstName = employee.FirstName,
+						LastName = employee.LastName,
+						DateOfBirth = employee.DateOfBirth,
+						Email = employee.Email,
+						Salary = employee.Salary
+					};
+					return View(employeeView);
+				}
+				else
+				{
+					TempData["errorMessage"] = $"Employee detail not available with the Id: {Id}";
+					return RedirectToAction("Index");
+				}
+			}
+			catch (Exception ex)
+			{
+				TempData["errorMessage"] = ex.Message;
+				return RedirectToAction("Index");
+			}
+		}
+        [HttpPost]
+        public IActionResult Delete(EmployeeViewModelcs model)
+        {
+            try
+            {
+                var employee = _context.Employees.SingleOrDefault(x => x.Id == model.Id);
+
+                if (employee != null)
+                {
+                    _context.Employees.Remove(employee);
+                    _context.SaveChanges();
+                    TempData["successMessage"] = "Yaay, " + model.FullName + " has been deleted";
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    TempData["errorMessage"] = $"Employee details not available for Id: {model.Id}";
+                    return RedirectToAction("Index");
+                }
+            }
+            catch (Exception ex)
+            {
+
+                TempData["errorMessage"] = ex.Message;
+                return View();
+            }
+        }
+	}
 }

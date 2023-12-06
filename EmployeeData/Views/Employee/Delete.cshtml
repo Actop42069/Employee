@@ -1,0 +1,57 @@
+﻿@model EmployeeData.Models.EmployeeViewModelcs
+
+@{
+	ViewData["Title"] = "Delete Employee";
+	var errorMessage = TempData["errorMessage"]?.ToString();
+}
+<h3>ViewData["Title"]</h3>
+<hr />
+@if (!string.IsNullOrWhiteSpace(errorMessage))
+{
+	<div class="alert alert-danger">
+		<strong>Sadness ;_; </strong>@errorMessage
+		<button type="button" class="btn-close float-end" data-bs-dismiss="alert"></button>
+	</div>
+
+}
+
+<form action="Delete" method="post">
+	<div class="mb-3">
+		<label class="form-label">Id</label>
+		<input type="text" class="form-control" asp-for="Id" readonly />
+	</div>
+
+	<div class="mb-3">
+		<label class="form-label">First Name</label>
+		<input type="text" class="form-control" asp-for="FirstName" readonly />
+	</div>
+
+	<div class="mb-3">
+		<label class="form-label">Last Name</label>
+		<input type="text" class="form-control" asp-for="LastName" readonly />
+	</div>
+
+	<div class="mb-3">
+		<label class="form-label">DateOfBirth</label>
+		<input type="date" class="form-control" asp-for="DateOfBirth" readonly />
+	</div>
+
+	<div class="mb-3">
+		<label class="form-label">Email</label>
+		<input type="email" class="form-control" asp-for="Email" readonly />
+	</div>
+
+	<div class="mb-3">
+		<label class="form-label">Salary</label>
+		<div class="input-group">
+			<span class="input-group-text">Rs.</span>
+			<input type="text" class="form-control" asp-for="Salary" readonly/>
+		</div>
+	</div>
+
+	<div class="d-grid">
+		<button type="submit" class="btn btn-outline-danger" onclick="return function('Are you sure about that : @Model.FullName)">Delete</button>
+
+	</div>
+
+</form>
