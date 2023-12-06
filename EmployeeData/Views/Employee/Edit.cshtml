@@ -2,8 +2,18 @@
 
 @{
 	ViewData["Title"] = "Edit Employee";
+	var errorMessage = TempData["errorMessage"]?.ToString();
 }
 <h3>ViewData["Title"]</h3>
+<hr />
+@if (!string.IsNullOrWhiteSpace(errorMessage))
+{
+	<div class="alert alert-danger">
+		<strong>Sadness ;_; </strong>@errorMessage
+		<button type="button" class="btn-close float-end" data-bs-dismiss="alert"></button>
+	</div>
+
+}
 
 <form action="Edit" method="post" >
 	<div class="mb-3">
@@ -50,3 +60,9 @@
 	</div>
 
 </form>
+
+@section Scripts {
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
+}
