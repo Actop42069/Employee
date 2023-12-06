@@ -34,14 +34,14 @@
 	</div>
 	<div class="mb-3">
 		<label class="form-label">Email</label>
-		<input type="text" class="form-control" asp-for="Email" />
+		<input type="email" class="form-control" asp-for="Email" />
 		<span asp-validation-for="Email" class="text-danger"></span>
 	</div>
 	<div class="mb-3">
 		<label class="form-label">Salary</label>
 		<div class="input-group">
 			<span class="input-group-text">Rs.</span>
-			<input type="text" class="form-control" asp-for="Salary" />
+			<input type="number" class="form-control" asp-for="Salary" />
 			<span asp-validation-for="Salary" class="text-danger"></span>
 		</div>
 	</div>

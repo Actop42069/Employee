@@ -77,23 +77,32 @@ namespace EmployeeData.Controllers
         [HttpGet]
         public IActionResult Edit(int Id)
         {
-            var employee = _context.Employees.SingleOrDefault(x => x.Id == Id);
-            if(employee != null)
+            try
             {
-                var employeeView = new EmployeeViewModelcs()
+                var employee = _context.Employees.SingleOrDefault(x => x.Id == Id);
+                if (employee != null)
                 {
-                    Id = employee.Id,
-                    FirstName = employee.FirstName,
-                    LastName = employee.LastName,
-                    DateOfBirth = employee.DateOfBirth,
-                    Email = employee.Email,
-                    Salary = employee.Salary
-                };
-				return View(employeeView);
-			}
-            else
+                    var employeeView = new EmployeeViewModelcs()
+                    {
+                        Id = employee.Id,
+                        FirstName = employee.FirstName,
+                        LastName = employee.LastName,
+                        DateOfBirth = employee.DateOfBirth,
+                        Email = employee.Email,
+                        Salary = employee.Salary
+                    };
+                    return View(employeeView);
+                }
+                else
+                {
+                    TempData["errorMessage"] = $"Employee detail not available with the Id: {Id}";
+                    return RedirectToAction("Index");
+                }
+            }
+            catch (Exception ex)
             {
-                TempData["errorMessage"] = $"Employee detail not available with the Id: {Id}";
+                TempData["errorMessage"] = ex.Message;
+                return RedirectToAction("Index");
             }
             
         }
